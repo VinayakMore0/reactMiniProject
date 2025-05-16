@@ -1,61 +1,44 @@
-import React, { useState } from "react";
-import Navbar from "./Components/Navbar";
-import Card from "./Components/Card";
+import React from "react";
 
 function App() {
-  const data = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1746304153031-c98a7f27bbae?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Challenger",
-      artist: "Vinayak",
-      added: false,
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1746713915201-4eed01ca887a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "One Day",
-      artist: "Hitesh",
-      added: false,
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1745282480794-10427e218c76?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "One Love",
-      artist: "Yash",
-      added: false,
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1746121813274-50f7f8d4bad4?q=80&w=2103&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Together",
-      artist: "Mansi",
-      added: false,
-    },
-  ];
-
-  const [songData, setSongData] = useState(data);
-  const handleClick = (index) => {
-    setSongData((prev) => {
-      return prev.map((item, itemIndex) => {
-        if (itemIndex === index) return { ...item, added: !item.added };
-        return item;
-      });
-    });
-  };
-
   return (
-    <div>
-      <Navbar data={songData} />
-      <div className="px-20 flex gap-10 mt-10 flex-wrap">
-        {songData.map((obj, index) => (
-          <Card
-            key={index}
-            data={obj}
-            handleClick={handleClick}
-            index={index}
-          />
-        ))}
+    <div className="h-screen w-screen flex">
+      <nav className="w-[15%] h-full bg-zinc-100 flex flex-col items-center pt-5">
+        <a
+          className="py-2 px-5 border rounded border-blue-200 text-blue-300"
+          href="/create"
+        >
+          Add New Product
+        </a>
+        <hr className="my-3 w-[80%]" />
+        <h1 className="text-2xl mb-3 w-[80%]">Category Filter</h1>
+        <ul className="w-[80%]">
+          <li className="flex items-center mb-3">
+            <span className="rounded-full mr-2 w-[15px] h-[15px] bg-blue-100"></span>
+            Cat 1
+          </li>
+          <li className="flex items-center mb-3">
+            <span className="rounded-full mr-2 w-[15px] h-[15px] bg-red-100"></span>
+            Cat 1
+          </li>
+          <li className="flex items-center mb-3">
+            <span className="rounded-full mr-2 w-[15px] h-[15px] bg-green-100"></span>
+            Cat 1
+          </li>
+        </ul>
+      </nav>
+
+      <div className="w-[85%] p-10 pt-[5%] flex flex-wrap overflow-x-hidden overflow-y-auto">
+        <div className="mr-3 mb-3 card p-3 border shadow rounded w-[18%] h-[30vh] flex flex-col justify-center items-center">
+          <div
+            className="hover:scale-110 mb-3 w-full h-[80%] bg-contain bg-no-repeat bg-center"
+            style={{
+              backgroundImage:
+                "url(https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg)",
+            }}
+          ></div>
+          <h1 className="hover:text-blue-300">Lorem ipsum dolor sit amet.</h1>
+        </div>
       </div>
     </div>
   );
